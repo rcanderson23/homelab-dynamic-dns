@@ -1,0 +1,23 @@
+apiVersion: networking.thehomelab.tech/v1alpha1
+kind: DNSProvider
+metadata:
+  name: thehomelab-tech-aws
+spec:
+  type: aws
+  config:
+    aws:
+      hostZoneID: AAABBBCCC123
+      ttl: 300
+---
+apiVersion: networking.thehomelab.tech/v1alpha1
+kind: DNSProvider
+metadata:
+  name: thehomelab-tech-cloudflare
+spec:
+  type: cloudflare
+  config:
+    aws:
+      hostZoneID: AAABBBCCC123
+      ttl: 300
+
+

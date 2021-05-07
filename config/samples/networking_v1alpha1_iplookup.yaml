@@ -1,0 +1,9 @@
+apiVersion: networking.thehomelab.tech/v1alpha1
+kind: IPLookup
+metadata:
+  name: ifconfig.me
+spec:
+  type: http
+  config:
+    http:
+      url: https://ifconfig.me

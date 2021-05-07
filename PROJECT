@@ -1,0 +1,10 @@
+domain: thehomelab.tech
+repo: github.com/rcanderson23/homelab-dynamic-dns
+resources:
+- group: networking
+  kind: DNSProvider
+  version: v1alpha1
+- group: networking
+  kind: IPLookup
+  version: v1alpha1
+version: "2"
