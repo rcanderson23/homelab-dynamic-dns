@@ -16,8 +16,8 @@ metadata:
 spec:
   type: cloudflare
   config:
-    aws:
-      hostZoneID: AAABBBCCC123
+    cloudflare:
+      zoneName: thehomelab.tech
       ttl: 300
 
 
