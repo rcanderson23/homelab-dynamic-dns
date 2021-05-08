@@ -41,7 +41,7 @@ kind: Ingress
 metadata:
   name: thehomelab-tech
   annotations:
-    thehomelab.tech/dnsprovider: aws # name of the DNSProvider CR to use
+    thehomelab.tech/dnsprovider: thehomelab-tech-aws # name of the DNSProvider CR to use
     thehomelab.tech/ip-address: external # Public IP; use 'internal' for ingress IP
     thehomelab.tech/iplookup: aws # name of IPLookup CR to use
 spec:
