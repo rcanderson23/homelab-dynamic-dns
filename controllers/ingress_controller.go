@@ -31,7 +31,7 @@ import (
 )
 
 const externalIngress = "thehomelab.tech/ip-address"
-const nsName = "thehomelab.tech/resolver"
+const nsName = "thehomelab.tech/dnsprovider"
 const ipLookupName = "thehomelab.tech/iplookup"
 
 // IngressReconciler reconciles a Ingress object
