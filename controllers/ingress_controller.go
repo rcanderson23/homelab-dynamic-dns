@@ -56,7 +56,7 @@ func (r *IngressReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ct
 		log.Error(err, "unable to find Ingress")
 		return ctrl.Result{}, client.IgnoreNotFound(err)
 	}
-
+	
 	// Check if this ingress has the necessary annotations to proceed
 	annotated := hasAnnotations(ing)
 	if !annotated {
@@ -66,15 +66,15 @@ func (r *IngressReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ct
 
 	// Get the IPLookup defined if it set to external
 	var iplookup namev1alpha1.IPLookup
-	ipName, present := ing.Annotations[ipLookupName]
-	if present && strings.ToLower(ipName) == "external" {
-		if err := r.Get(ctx, client.ObjectKey{Name: ipName}, &iplookup); err != nil {
-			log.Error(err, "IPLookup not found", ipName)
+	external, present := ing.Annotations[externalIngress]
+	if present && strings.ToLower(external) == "external" {
+		if err := r.Get(ctx, client.ObjectKey{Name: ing.Annotations[ipLookupName]}, &iplookup); err != nil {
+			log.Error(err, "IPLookup not found", ing.Annotations[ipLookupName])
 			return ctrl.Result{}, err
 		}
 	}
 	var ipAddrs []string
-	if strings.ToLower(ipName) == "external" {
+	if strings.ToLower(external) == "external" {
 		ipAddrs = append(ipAddrs, iplookup.Status.Address)
 	} else {
 		ipAddrs = getIngressIPs(ing.Status)
