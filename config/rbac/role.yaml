@@ -13,6 +13,15 @@ rules:
   verbs:
   - get
 - apiGroups:
+  - coordination.k8s.io
+  resources:
+  - leases
+  verbs:
+  - create
+  - get
+  - list
+  - update
+- apiGroups:
   - networking.k8s.io
   resources:
   - ingresses
@@ -35,6 +44,14 @@ rules:
 - apiGroups:
   - networking.thehomelab.tech
   resources:
+  - dnsproviders
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - networking.thehomelab.tech
+  resources:
   - iplookups
   verbs:
   - create
@@ -52,9 +69,3 @@ rules:
   - get
   - patch
   - update
-- apiGroups:
-  - networking.thehomelab.tech
-  resources:
-  - resolvers
-  verbs:
-  - get

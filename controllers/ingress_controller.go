@@ -46,7 +46,7 @@ type IngressReconciler struct {
 // +kubebuilder:rbac:groups=networking.k8s.io,resources=ingresses/status,verbs=get;update;patch
 // +kubebuilder:rbac:groups="",resources=secrets,verbs=get
 // +kubebuilder:rbac:groups=networking.thehomelab.tech,resources=iplookups,verbs=get
-// +kubebuilder:rbac:groups=networking.thehomelab.tech,resources=resolvers,verbs=get
+// +kubebuilder:rbac:groups=networking.thehomelab.tech,resources=dnsproviders,verbs=get;list;watch
 
 func (r *IngressReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
 	log := r.Log.WithValues("ingress", req.NamespacedName)
