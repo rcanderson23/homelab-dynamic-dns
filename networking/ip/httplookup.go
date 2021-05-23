@@ -5,6 +5,7 @@ import (
 	"io"
 	"net/http"
 	"regexp"
+	"strings"
 )
 
 // GetIP retrieves IP via web request
@@ -18,11 +19,12 @@ func (h *HttpLookup) GetIP() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	valid := validateIP(string(body))
+	ip := strings.TrimRight(string(body), "\n")
+	valid := validateIP(ip)
 	if !valid {
 		return "", errors.New("not a valid ip")
 	}
-	return string(body), nil
+	return ip, nil
 }
 
 // validateIP checks if the IP is actually a valid address
